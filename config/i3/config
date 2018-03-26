@@ -153,6 +153,7 @@ bindsym $mod+Shift+r                 restart
 
 ###---O
 bindsym $mod+o                       workspace back_and_forth
+bindsym $mod+Shift+o                 exec --no-startup-id screenkey
 
 ###---P
 bindsym $mod+p                       exec --no-startup-id scrot 
