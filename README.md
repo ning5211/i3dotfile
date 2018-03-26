@@ -1,1 +1,1 @@
-# i3dotfile
+# myconfig

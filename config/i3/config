@@ -1,0 +1,314 @@
+# #---基础设定----# #
+# --需要安装i3-gaps,polybar -- # 
+
+for_window [class="^.*"] border pixel 0
+gaps inner 8
+gaps outer 8
+
+#聚焦窗口边框 
+client.focused                   #c7c8f7  #c7c8f7  #c7c8f7  #c7c8f7  
+client.focused_inactive          #44475a  #44475a  #44475a  #44475a   
+#非聚焦窗口边框
+client.unfocused                 #44475a  #44475a  #44475a  #44475a   
+client.urgent                    #44475a  #44475a  #44475a  #44475a   
+
+#字体
+font pango:DejaVuSansMono Nerd Font,WenQuanYi Micro Hei  12
+
+#mod键为ALT:
+set $mod Mod1
+
+#设置默认终端:
+set $term      --no-startup-id urxvt -depth 32
+
+#浮动终端
+set $fterm     --no-startup-id urxvt -depth 32 -name floating
+
+#设置备选终端:
+set $reterm    --no-startup-id st
+
+
+
+########------------------开机启动-------------#
+#compton合成管理器: 
+exec  compton  -b
+
+##------加速终端应用,如vim，ranger,ncmpcpp等光标移动速度
+exec   r rate 250 50 
+
+##------开机启动fcitx输入法:
+#exec  --no-startup-id    fcitx
+
+#polybar启动:
+exec_always --no-startup-id  ~/.config/polybar/launch.sh
+
+##--------feh设置壁纸:
+##随机壁纸
+##exec_always --no-startup-id feh --randomize  --bg-scale ~/.config/i3/Future/*
+
+exec_always --no-startup-id feh --bg-scale ~/.config/i3/1.jpg
+
+###---调用mpv视频作为壁纸
+#exec_always  --no-startup-id  xwinwrap -g 1366x768 -ov -- mpv --no-input-cursor  --loop-file -wid WID ~/.config/i3/aoa.mp4
+
+
+#MPD音乐服务:
+exec --no-startup-id  mpd
+ 
+
+
+
+
+##---------------------基本键盘绑定------------------
+
+bindsym $mod+Return 		        exec $term
+bindsym $mod+Shift+Return 		    exec $reterm
+
+bindsym $mod+Shift+space 	        floating toggle    
+bindsym $mod+space		            focus mode_toggle  
+
+
+
+
+
+
+##------------------字母键绑定--------------------------------- #
+
+####--A
+bindsym $mod+Shift+a                 kill
+
+###---B
+bindsym $mod+b                       workspace prev
+bindsym $mod+Shift+b                 move container to workspace prev
+
+###---C
+bindsym $mod+c                       exec --no-startup-id  ~/draw.sh
+bindsym $mod+Shift+c                 reload
+
+###---D
+bindsym $mod+d                       exec --no-startup-id rofi -show drun         
+bindsym $mod+Shift+d                 exec --no-startup-id rofi -show run
+
+###---E
+bindsym $mod+e                       layout toggle split
+bindsym $mod+shift+e                 layout tabbed
+
+###---F
+bindsym $mod+f                       fullscreen toggle
+bindsym $mod+Shift+f                 exec --no-startup-id qutebrowser 
+
+###---G
+bindsym $mod+g                       exec  $fterm -e pulsemixer 
+bindsym $mod+Shift+g                 exec  $fterm -e alsamixer
+
+###---I
+bindsym $mod+i                       exec $fterm  -name  hightop -e htop
+bindsym $mod+Shift+i                 exec $fterm -e vtop
+
+###---M
+bindsym $mod+m                       exec $term   -e ncmpcpp
+bindsym $mod+shift+m                 exec $fterm  -e ncmpcpp
+
+###---N
+bindsym $mod+n                       workspace next
+bindsym $mod+Shift+n                 move container to workspace next
+
+
+
+
+###----H,J,K,L---绑定
+bindsym $mod+h                       focus left
+bindsym $mod+j                       focus down
+bindsym $mod+k                       focus up
+bindsym $mod+l                       focus right
+
+bindsym $mod+Shift+h                 move left
+bindsym $mod+Shift+j                 move down
+bindsym $mod+Shift+k                 move up
+bindsym $mod+Shift+l                 move right
+
+###resize模式
+bindsym $mod+r                       mode "resize"
+
+mode "resize" {
+         bindsym h                   resize grow left 10 px or 10 ppt
+         bindsym shift+h             resize shrink left 10 px or 10 ppt
+
+         bindsym j                   resize grow down 10 px or 10  ppt
+         bindsym shift+j             resize shrink down 10 px or 10  ppt
+
+         bindsym k                   resize grow up 10 px or 10 ppt
+         bindsym shift+k             resize shrink up 10 px or 10 ppt
+
+         bindsym l                   resize grow right 10 px or 10 ppt
+         bindsym shift+l             resize shrink right 10 px or 10 ppt
+ 
+         bindsym Return              mode "default"
+         bindsym Escape              mode "default"
+  }
+
+
+###R
+bindsym $mod+Shift+r                 restart
+
+###---O
+bindsym $mod+o                       workspace back_and_forth
+
+###---P
+bindsym $mod+p                       exec --no-startup-id scrot 
+#https://github.com/meskarune/i3lock-fancy
+bindsym $mod+Shift+p                 exec --no-startup-id lock 
+
+###--Q
+bindsym $mod+q                       focus parent
+bindsym $mod+Shift+q                 exec ~/.config/i3/rofi_powermenu.sh    
+
+###---S
+bindsym $mod+s                       gaps inner current plus 5
+bindsym $mod+Shift+s                 gaps inner current minus 5
+
+###---T
+bindsym $mod+t                       split toggle
+bindsym $mod+Shift+t                 gaps inner all set 8; gaps outer all set 8
+
+###---U
+bindsym $mod+u                       exec $term  -name math -fn "xft:InconsolataLGC Nerd Font:pixelsize=24" -e R -q
+bindsym $mod+Shift+u                 exec $fterm -e ranger
+
+###---V
+bindsym $mod+shift+v                 split h
+bindsym $mod+v                       split v               
+
+###---W
+bindsym $mod+w                       exec --no-startup-id rofi -show window
+bindsym $mod+Shift+w                 exec --no-startup-id rofi -show ssh
+
+
+###---X
+bindsym $mod+x                       exec  $term -e ranger 
+bindsym $mod+Shift+x                 exec  $term -e sudo ranger 
+
+###---Y
+bindsym $mod+y                       exec $fterm
+bindsym $mod+Shift+y                 exec $reterm   -n floating
+
+###---Z
+bindsym $mod+z                       gaps outer current plus 5
+bindsym $mod+Shift+z                 gaps outer current minus 5
+
+
+
+
+
+###------1-9数字键--工作区绑定-- # #
+
+bindsym $mod+1                        workspace $ws1
+bindsym $mod+2                        workspace $ws2
+bindsym $mod+3                        workspace $ws3
+bindsym $mod+4                        workspace $ws4
+bindsym $mod+5                        workspace $ws5
+bindsym $mod+6                        workspace $ws6
+bindsym $mod+7                        workspace $ws7
+bindsym $mod+8                        workspace $ws8
+bindsym $mod+9                        workspace $ws9
+bindsym $mod+0                        workspace $ws10
+
+bindsym $mod+Shift+1                  move container to workspace $ws1
+bindsym $mod+Shift+2                  move container to workspace $ws2
+bindsym $mod+Shift+3                  move container to workspace $ws3
+bindsym $mod+Shift+4                  move container to workspace $ws4
+bindsym $mod+Shift+5                  move container to workspace $ws5
+bindsym $mod+Shift+6                  move container to workspace $ws6
+bindsym $mod+Shift+7                  move container to workspace $ws7
+bindsym $mod+Shift+8                  move container to workspace $ws8
+bindsym $mod+Shift+9                  move container to workspace $ws9
+bindsym $mod+Shift+0                  move container to workspace $ws10
+
+
+
+####------工作区fontawesome图标,详见 https://fontawesome.com/
+set $ws1  "1:  " 
+set $ws2  "2:  " 
+set $ws3  "3:  " 
+set $ws4  "4:  " 
+set $ws5  "5:  " 
+set $ws6  "6:  " 
+set $ws7  "7:  " 
+set $ws8  "8:  " 
+set $ws9  "9:  " 
+set $ws10 "10:  " 
+
+
+
+
+
+
+####---方向键绑定
+
+# #--亮度(light)，音量(pulsemixer-git)，音乐控制调节(mpc):
+
+#亮度+2
+bindsym $mod+Ctrl+Up         exec light -A 2
+#亮度-2
+bindsym $mod+Ctrl+Down       exec light -U 2
+
+#bindsym $mod+Ctrl+Right     exec "amixer -q sset Master,0 1+ unmute"
+#bindsym $mod+Ctrl+Left      exec "amixer -q sset Master,0 1- unmute"
+
+bindsym $mod+Ctrl+Right      exec  "pulsemixer --change-volume  +2"
+bindsym $mod+Ctrl+Left       exec  "pulsemixer --change-volume  -2"
+
+###音乐控制
+######################
+
+#上一首
+bindsym Ctrl+Up             exec mpc prev
+#下一首
+bindsym Ctrl+Down           exec mpc next
+#前进5秒
+bindsym Ctrl+Right          exec mpc seek +5
+#后退5秒
+bindsym Ctrl+Left           exec mpc seek -5
+#暂停
+bindsym Ctrl+End            exec mpc pause
+#播放
+bindsym Ctrl+Home           exec mpc toggle
+
+
+
+
+
+
+####---------------------自定义软件样式
+
+for_window [class="URxvt"] border pixel 3
+#for_window [class="Gimp*"] floating enable
+for_window [class="VirtualBox"] border pixel 1,floating enable,resize set 960 540,move position center
+for_window [class="virtualbox"] border pixel 1,floating enable,resize set 960 540,move position center 
+for_window [class="Telegram"]   border pixel 0,floating enable,resize set 960 540, move position center
+for_window [class="feh"] border pixel 3
+for_window [class="Zathura"] border pixel 3
+####gimp
+
+##for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
+##for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 px or 30ppt
+
+#st 终端
+for_window [class="st"] border pixel 3
+#mpv 浮动，800×450,居中
+for_window [class="mpv"] floating enable,resize set 800 450,border pixel 3,move position center
+#for_window [class="mpv" title="video0"] floating enable resize set 480 270 move position center
+
+#for_window [class="mpv"] move to workspace $ws6
+for_window [class="Gvim"] floating enable,resize set 960 540,border pixel 4,move position center
+
+for_window [class="SimpleScreenRecorder"] floating enable 
+for_window [class="URxvt" instance="drawing"] floating enable
+for_window [instance="floating"] floating enable,resize set 960 540, border pixel 4,move position center
+for_window [class="URxvt" instance="hightop"] floating enable,resize set 800 400, border pixel 4,move position center
+##for_window [class="qutebrowser"] floating disable,border pixel 3
+##R语言计算器
+for_window [instance="math"] floating enable,border pixel 4,resize set 900 400,move position center
+for_window [class="qBittorrent"] floating enable,resize set 800 400,move position center
+
+#####-END--###

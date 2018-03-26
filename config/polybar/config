@@ -1,0 +1,426 @@
+; 详见https://github.com/jaagr/polybar/wiki/Configuration
+
+[colors]
+  background           = #282a36
+  background-alt       = #444
+  foreground           = #c7c8f7
+  foreground-alt       = #555
+  primary              = #ffb52a
+  secondary            = #e60053
+  alert                = #bd2c40
+  purple               = #bd93f9
+
+
+[global/wm]
+  margin-top           = 5
+  margin-bottom        = 5
+
+
+;# # # # # # # # # # 
+[bar/top]
+  ;polybar -m 查看显示器名称
+  monitor = ${env:MONITOR}
+  monitor-strict = true
+  dpi = 98
+  bottom = false
+  width = 100%
+  height = 24
+  offset-x = 0
+  offset-y = 0
+  
+  background = ${colors.background}
+  foreground = ${colors.foreground}
+  
+  overline-size = 0
+  overline-color = #f00
+  underline-size = 2
+  underline-color = #00f
+  
+  border-bottom-size = 0
+  border-bottom-color = ${colors.background}
+  
+  spacing = 1
+  padding-left = 0
+  padding-right = 2
+  module-margin-left = 1
+  module-margin-right = 2
+  
+  font-0 = wenquanyi micro hei:pixelsize=12;2
+  font-1 = wenquanyi micro hei:size=10;2
+  font-2 = wenquanyi micro hei:pixelsize=10;3
+  font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=12;2"
+  font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
+  font-5 = "Font Awesome 5 Brands:pixelsize=12;2"
+  
+  modules-left =  i3 xwindow
+  modules-center =
+  modules-right = backlight volume  battery date powermenu
+  
+  tray-position = right
+  tray-padding = 4
+
+
+
+;# # #
+[bar/bottom]
+  monitor = ${env:MONITOR}
+  monitor-strict = true
+  dpi =  98
+  bottom = true
+  width = 100%
+  height = 24
+  offset-x = 0
+  offset-y = 0
+  
+  background = ${colors.background}
+  foreground = ${colors.foreground}
+  
+  overline-size = 0
+  overline-color = #f00
+  underline-size = 0
+  underline-color = #00f
+  
+  border-bottom-size = 0
+  border-bottom-color = ${colors.background}
+  
+  spacing = 1
+  padding-left = 1
+  padding-right = 2
+  module-margin-left = 1
+  module-margin-right = 2
+  
+  font-0 = wenquanyi micro hei:pixelsize=12;2
+  font-1 = wenquanyi micro hei:size=10;2
+  font-2 = wenquanyi micro hei:pixelsize=10;3
+  font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=12;2"
+  font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
+  font-5 = "Font Awesome 5 Brands:pixelsize=12;2"
+  
+  modules-left = mpd
+  modules-center = networkspeedup networkspeeddown
+  modules-right = network  filesystem-home cpu temperature  memory
+  
+  tray-position = right
+  tray-padding = 2
+
+
+;#######模块设置#####;
+
+[module/xwindow]
+  type = internal/xwindow
+  label = "%{F#5b5b5b}%{F-} %title:0:30:...%"
+
+
+
+
+[module/i3]
+  type = internal/i3
+  format = <label-state> <label-mode>
+  index-sort = true
+  wrapping-scroll = false
+  strip-wsnumbers = true
+  pin-workspaces = true
+  
+  label-mode-padding = 4
+  
+  label-focused = %name%
+  label-focused-background = ${colors.background-alt}
+  label-focused-underline =  #f3f99d
+  label-focused-padding = 4
+  
+  label-unfocused = %name%
+  label-unfocused-padding = 4
+  
+  label-urgent = %name%!
+  label-urgent-background = ${colors.alert}
+  label-urgent-padding = 4
+  
+  label-visible = %name%
+  lable-visible-padding = 4
+  label-visible-background = ${self.label-focused-background}
+  label-visible-underline = ${self.label-focused-underline}
+  label-visible-padding = ${self.label-focused-padding}
+  
+
+  label-empty = %name%
+  label-empty-foreground = ${colors.foreground}
+  label-empty-padding = 4
+
+
+
+
+
+[module/filesystem-home]
+  type = internal/fs
+  interval = 25
+ 
+  mount-0 = /home
+  label-mounted = "%{F#d70a53}%{F-} %percentage_used%%"
+
+
+
+
+
+[module/mpd]
+  type = internal/mpd
+  interval=2
+  format-online = "<icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <label-song> <bar-progress>"
+  
+  label-song-maxlen = 59
+  label-song-ellipsis = true
+  ;label-song =  %artist% - %title%
+  label-song = %artist% - %title%
+  
+  icon-prev = %{F#50fa7b}%{F-}
+  icon-seekb = %{F#5b}%{F-}
+  icon-stop = %{F#ff5555}%{F-}
+  icon-play = %{F#ff79c6}%{F-}
+  icon-pause = %{F#50fa7b}%{F-}
+  icon-next = %{F#50fa7b}%{F-}
+  icon-seekf = %{F#5b}%{F-}
+  
+  icon-random = 
+  icon-repeat = 
+  
+  toggle-on-foreground = #f8f8f2
+  toggle-off-foreground = #66
+  
+  bar-progress-width = 12
+  bar-progress-indicator = 
+  bar-progress-fill = 
+  bar-progress-fill-foreground = #8be9fd
+  bar-progress-empty = 
+  bar-progress-empty-foreground = ${colors.foreground}
+
+
+
+
+
+[module/backlight]
+  type = internal/backlight
+  card = intel_backlight
+  click-left = connman-gtk
+  format = <label> <bar>
+  label = 
+  format-prefix = ""
+  
+  bar-width = 8
+  bar-indicator = 
+  bar-indicator-foreground = #ff
+  bar-indicator-font = 2
+  bar-fill = 
+  bar-fill-font = 2
+  bar-fill-foreground = #bd93f9
+  bar-empty = 
+  bar-empty-font = 2
+  bar-empty-foreground = ${colors.foreground-alt}
+
+
+
+[module/cpu]
+  type = internal/cpu
+  interval = 2
+  format = <label>
+  label = "%{F#ffb86c} %{F-} %percentage%%"
+
+
+
+[module/memory]
+  type = internal/memory
+  interval = 2
+  format = <label> <bar-used>
+  label    =
+  format-prefix = 
+  format-prefix-foreground = #50fa7b
+  bar-used-width = 10
+  bar-used-foreground-0 = #bd93f9
+  bar-used-foreground-1 = #bd93f9
+  bar-used-foreground-2 = #bd93f9
+  bar-used-foreground-3 = #bd93f9
+  bar-used-indicator = 
+  bar-used-fill = 
+  bar-used-empty = 
+  bar-used-empty-foreground = #444444
+
+
+
+
+[module/network]
+  type = internal/network
+  ;网卡信息：ip addr 
+  interface = wlp3s0
+  interval = 3.0
+  accumulate-stats = true
+  format-connected = <label-connected>
+  format-connected-prefix = " "
+  format-connected-prefix-foreground = #8be9fd
+  label-connected = %local_ip%
+  label-connected-foreground = ${colors.foreground}
+
+
+
+
+[module/networkspeedup]
+  type = internal/network
+  interface = wlp3s0
+  label-connected = "%upspeed:7%"
+  format-connected = <label-connected>
+  format-connected-prefix = " "
+  format-connected-prefix-foreground = #ff5555
+
+
+[module/networkspeeddown]
+  type = internal/network
+  interface = wlp3s0
+  label-connected = "%downspeed:7%"
+  format-connected = <label-connected>
+  format-connected-prefix = " "
+  format-connected-prefix-foreground = #50fa7b
+
+
+[module/date]
+  type = internal/date
+  interval = 1
+  time = "%{F#bd93f9} %{F#c7c8f7}%H:%M:%S%"
+  ;date = "%{F#f8f8f2} %{F#f1fa8c}%Y/%m/%d%"
+  date = "%{F#bd93f9} %{F#c7c8f7}%y/%m/%d%"
+  label = %date% %time%
+  date-alt = %A, %d %B %Y
+  time-alt = %H:%M:%S
+
+
+[module/volume]
+  type = internal/volume
+  
+  format-volume = <label-volume> <bar-volume>
+  label-volume = ""
+  label-volume-foreground = ${colors.foreground}
+  
+  format-muted-prefix = " "
+  format-muted-foreground = ${colors.foreground-alt}
+  label-muted = muted
+  
+  bar-volume-width =8
+  bar-volume-foreground-0 = #5af78e
+  bar-volume-foreground-1 = #5af78e
+  bar-volume-foreground-2 = #5af78e
+  bar-volume-foreground-3 = #5af78e
+  bar-volume-foreground-4 = #5af78e
+  bar-volume-foreground-5 = #f3f99d
+  bar-volume-foreground-6 = #ff5c57
+  bar-volume-gradient = false
+  bar-volume-indicator = 
+  bar-volume-indicator-font = 1
+  bar-volume-indicator-foreground = #ff
+  bar-volume-fill = 
+  bar-volume-fill-font = 2
+  bar-volume-empty = 
+  bar-volume-empty-font = 2
+  bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+[module/temperature]
+  type = internal/temperature
+  thermal-zone = 0
+  warn-temperature = 60
+  
+  format = <ramp> <label>
+  format-underline = #f50a4d
+  format-warn = <ramp> <label-warn>
+  format-warn-underline = ${self.format-underline}
+  
+  label = %temperature%
+  label-warn = %temperature%
+  label-warn-foreground = #ff5555
+  
+  ramp-0 = 
+  ramp-1 = 
+  ramp-2 = 
+  ramp-0-foreground = #50fa7b
+  ramp-1-foreground = #8be9fd  
+  ramp-2-foreground = #ff79c6 
+
+
+
+
+[module/battery]
+  type = internal/battery
+  ;查看电池名称:ls /sys/class/power_supply/
+  battery = BAT1
+  adapter = AC
+  full-at = 98
+  time-format = "%H%{F#92}%M%{F-}"
+  
+  label-discharging = %percentage% %time%
+  
+  format-charging = <animation-charging> <label-charging>
+  format-charging-underline = #f3f99d
+  
+  format-discharging = <ramp-capacity> <label-discharging>
+  format-discharging-underline = ${self.format-charging-underline}
+  
+  format-full-prefix = " "
+  format-full-prefix-foreground = #50fa7b
+  format-full-underline = ${self.format-charging-underline}
+  
+  ramp-capacity-0 = 
+  ramp-capacity-0-foreground = #ff5555
+  ramp-capacity-1 = 
+  ramp-capacity-1-foreground = #ff5555
+  ramp-capacity-2 = 
+  ramp-capacity-2-foreground = #ffb86c
+  ramp-capacity-3 = 
+  ramp-capacity-3-foreground = #8be9fd
+  ramp-capacity-4 = 
+  ramp-capacity-4-foreground = #50fa7b
+  
+  animation-charging-0 = 
+  animation-charging-0-foreground = #ff5555
+  animation-charging-1 = 
+  animation-charging-1-foreground = #ff5555
+  animation-charging-2 = 
+  animation-charging-2-foreground= #ffb86c
+  animation-charging-3 = 
+  animation-charging-3-foreground= #8be9fd
+  animation-charging-4 = 
+  animation-charging-4-foreground = #50fa7b
+  animation-charging-framerate = 750
+
+
+
+
+
+[module/powermenu]
+  type = custom/menu
+  
+  label-open = 
+  label-open-foreground = #ff5c56
+  label-close =  cancel
+  label-close-foreground = ${colors.secondary}
+  label-separator = |
+  label-separator-foreground = ${colors.foreground-alt}
+  
+  menu-0-0 = reboot
+  menu-0-0-exec = menu-open-1
+  menu-0-1 = power off
+  menu-0-1-exec = menu-open-2
+  menu-0-2 = log out
+  menu-0-2-exec = menu-open-3
+  menu-0-3 = 
+  menu-0-3-exec = "/usr/local/bin/lock"
+  
+  menu-1-0 = cancel
+  menu-1-0-exec = menu-open-0
+  menu-1-1 = reboot
+  menu-1-1-exec =  reboot
+  
+  menu-2-0 = power off
+  menu-2-0-exec = shutdown now
+  menu-2-1 = cancel
+  menu-2-1-exec = menu-open-0
+  
+  menu-3-0 = log out
+  menu-3-0-exec = i3-msg exit
+  menu-3-1 = cancel
+  menu-3-1-exec = menu-open-0
+
