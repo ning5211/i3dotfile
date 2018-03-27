@@ -153,7 +153,7 @@ bindsym $mod+Shift+r                 restart
 
 ###---O
 bindsym $mod+o                       workspace back_and_forth
-bindsym $mod+Shift+o                 exec --no-startup-id screenkey
+bindsym $mod+Shift+o                 exec --no-startup-id  screenkey
 
 ###---P
 bindsym $mod+p                       exec --no-startup-id scrot 
@@ -175,7 +175,6 @@ bindsym $mod+Shift+t                 gaps inner all set 8; gaps outer all set 8
 ###---U
 bindsym $mod+u                       exec $term  -name math -fn "xft:InconsolataLGC Nerd Font:pixelsize=24" -e R -q
 bindsym $mod+Shift+u                 exec $fterm -e ranger
-
 ###---V
 bindsym $mod+shift+v                 split h
 bindsym $mod+v                       split v               
@@ -288,13 +287,14 @@ for_window [class="VirtualBox"] border pixel 1,floating enable,resize set 960 54
 for_window [class="virtualbox"] border pixel 1,floating enable,resize set 960 540,move position center 
 for_window [class="Telegram"]   border pixel 0,floating enable,resize set 960 540, move position center
 for_window [class="feh"] border pixel 3
+for_window [class="Emacs"] border pixel 3
 for_window [class="Zathura"] border pixel 3
 ####gimp
 
 ##for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
 ##for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 px or 30ppt
 
-#st 终端
+#st 终端浮动
 for_window [class="st"] border pixel 3
 #mpv 浮动，800×450,居中
 for_window [class="mpv"] floating enable,resize set 800 450,border pixel 3,move position center
