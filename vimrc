@@ -11,6 +11,7 @@
         Plugin 'mattn/emmet-vim'
         Plugin 'terryma/vim-multiple-cursors'
         Plugin 'scrooloose/nerdtree'
+        Plugin 'JamshedVesuna/vim-markdown-preview'
         Plugin 'junegunn/goyo.vim'
         "Plugin 'w0rp/ale'
 
@@ -55,6 +56,8 @@
         set guioptions-=m
         set guioptions-=T
         set guioptions-=r
+        set guioptions-=L
+        set guioptions-=b 
 
         autocmd filetype html,css,htmldjango,javascript set shiftwidth=2 tabstop=2 softtabstop=2
 
@@ -94,8 +97,6 @@
 
 
 "LaTex
-     
-        """LeTex
         let g:livepreview_previewer = 'zathura'
         let g:livepreview_engine = 'xelatex'
         "autocmd FileType tex inoremap <F5> <Esc>:!xelatex<space><c-r>%<Enter>a
