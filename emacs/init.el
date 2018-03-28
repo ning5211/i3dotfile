@@ -5,10 +5,12 @@
 ;; You may delete these explanatory comments.
 (setq inhibit-startup-message t)
 
+(setq x-meta-keysym 'spc)
 (setq backup-directory-alist (quote (("." . "~/.emacs-backups"))))
 
 (set-default-font "InconsolataGo Nerd Font 14")
 
+(setq backup-directory-alist (quote (("." . "~/.emacs-backups"))))
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -38,33 +40,39 @@
 
 
 
-(add-hook 'emmet-mode-hook
-          (lambda ()
-            ;; clearing old C-j and C-return key mapping.
-            (define-key emmet-mode-keymap (kbd "C-j")        nil)
-            (define-key emmet-mode-keymap (kbd "<C-return>") nil)
-            ;; define new M-j key mapping instead.
-            (define-key emmet-mode-keymap (kbd "C-l")        'emmet-expand-line)))
+;web-mode
+(use-package web-mode :ensure t
+  :mode
+  (
+   ".twig"
+   ".html?"
+   ".hbs$"
+   ".vue$"
+   )
+  :config
+  (setq
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-enable-auto-closing t
+   web-mode-enable-auto-opening t
+   web-mode-enable-auto-pairing t
+   web-mode-enable-auto-indentation t
+))
 
-(setq x-super-keysym 'meta)
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
-(add-hook 'html-mode-hook
-          (lambda()
-            (setq sgml-basic-offset 2)
-            (setq tab-width 2)
-            (setq indent-tabs-mode t)))
+
+
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("bce3ae31774e626dce97ed6d7781b4c147c990e48a35baedf67e185ebc544a56" default)))
  '(package-selected-packages
    (quote
-    (org-bullets spaceline zerodark-theme try s evil emmet-mode))))
+    (emmet-mode web-mode zerodark-theme try treemacs-evil spacemacs-theme spaceline org-bullets mingus doom-themes atom-one-dark-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
