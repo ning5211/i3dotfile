@@ -30,7 +30,7 @@
 
 
 
-(load-theme 'zerodark t) 
+(load-theme 'atom-one-dark t) 
 
 (powerline-default-theme)
 
