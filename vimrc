@@ -52,6 +52,21 @@
         set guifont=InconsolataGo\ Nerd\ Font\ 14
 
 
+        "tab操作:
+        nnoremap <C-t> :tabnew<cr>   
+        nnoremap th : tabfirst<cr>
+        nnoremap tj :tabprevious<cr>
+        nnoremap tk :tabnext<cr>
+        nnoremap tl : tablast<cr> 
+        nnoremap tx : tabclose<cr>
+
+
+
+
+        " Enable autocompletion:
+     	set wildmode=longest,list,full
+     	set wildmenu
+
         "隐藏gui界面的菜单 工具栏 滚动条
         set guioptions-=m
         set guioptions-=T
