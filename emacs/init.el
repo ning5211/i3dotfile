@@ -7,7 +7,7 @@
 
 (setq backup-directory-alist (quote (("." . "~/.emacs-backups"))))
 
-(set-default-font "SauceCodePro Nerd Font 14")
+(set-default-font "InconsolataGo Nerd Font 14")
 
 (setq backup-directory-alist (quote (("." . "~/.emacs-backups"))))
 
