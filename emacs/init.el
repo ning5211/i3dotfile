@@ -9,7 +9,6 @@
 
 (set-default-font "InconsolataGo Nerd Font 14")
 
-(setq backup-directory-alist (quote (("." . "~/.emacs-backups"))))
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
