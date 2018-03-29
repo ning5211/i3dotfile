@@ -1,0 +1,122 @@
+* ArchLinux安装步骤
+** 首先联网,wifi-menu  
+** 分区
+*** 验证是否是UFEI启动,如果不是请跳过,如果是，需要新建一个efi分区,大小为512M.格式为fat;
+    #+BEGIN_SRC 
+# ls /sys/firmware/efi/efivars   
+    #+END_SRC
+*** 简易分区流程
+**** fdisk /dev/sdx
+**** 一个根分区(大小30G左右)
+**** swap分区视机器内存大小而定,可有可无;
+**** 剩下全部为home分区;    
+** 格式化分区
+*** 格式化uefi分区:
+    #+BEGIN_SRC 
+# mkfs.fat -F32 /dev/sdxY
+    #+END_SRC
+*** 格式化swap分区:
+    #+BEGIN_SRC 
+# mkswap
+    #+END_SRC
+*** 格式化根目录与家目录:    
+    #+BEGIN_SRC 
+# mkfs.ext4 /dev/sda1 
+# mkfs.ext4 /dev/sda3
+    #+END_SRC
+
+** 挂载分区
+*** 挂载根分区: 
+    #+BEGIN_SRC 
+#mount /dev/sda1  /mnt
+    #+END_SRC
+*** 挂载swap分区:
+    #+BEGIN_SRC 
+#swapon /dev/sda2
+    #+END_SRC
+*** 挂载家目录:
+**** 首先创建/home:
+    #+BEGIN_SRC 
+# mkdir  /mnt/home
+    #+END_SRC
+**** 然后挂载:     
+     #+BEGIN_SRC 
+# mount /dev/sda3 /mnt     
+     #+END_SRC
+*** 挂载uefi分区:
+**** 首先创建/mnt/boot 
+     #+BEGIN_SRC 
+# mkdir /mnt/boot     
+     #+END_SRC
+**** 然后挂载:    
+     #+BEGIN_SRC 
+mount /dev/sdx /mnt/boot     
+     #+END_SRC
+     
+** 更改镜像并刷新
+   #+BEGIN_SRC 
+# vim /etc/pacman.d/mirrors   
+# pacman -Syy
+   #+END_SRC
+** 安装系统包
+*** pacstrap -i /mnt base base-devel
+** 配置系统
+*** fstab并检查:
+    #+BEGIN_SRC 
+# genfstab -U /mnt >> /mnt/etc/fstab
+# vim /mnt/etc/fstab
+    #+END_SRC
+*** chroot
+    #+BEGIN_SRC 
+# arch-chroot
+    #+END_SRC
+*** 安装一些列软件:
+    #+BEGIN_SRC 
+# pacman -S vim networkmanager git zsh
+    #+END_SRC
+*** 开机启动networkmanager              
+    #+BEGIN_SRC 
+# systemctl NetworkManager
+    #+END_SRC
+*** 主机名:
+    #+BEGIN_SRC 
+# vim /etc/hostname
+    #+END_SRC
+*** 设置root密码:
+    #+BEGIN_SRC 
+# passwd    
+    #+END_SRC
+*** locale本地化:
+    #+BEGIN_SRC 
+# LANG=en_US.UTF-8 ==> vim /etc/locale.conf 
+# vim /etc/locale.gen 
+    #+END_SRC
+*** 安装intel微代码:
+    #+BEGIN_SRC 
+pacman -S intel-ucode
+    #+END_SRC
+** 安装grub
+*** BIOS启动
+    #+BEGIN_SRC 
+# pacman -S grub
+# grub-install /dev/sda
+    #+END_SRC
+*** UEFI
+    #+BEGIN_SRC 
+# pacman -S grub efibootmgr
+# grub-install --target=x86_64-efi  --efi-directory=/boot/efi  --bootload-id=grub 
+    #+END_SRC
+** 生成主配置文件
+   #+BEGIN_SRC 
+grub-mkconfig -o /boot/grub/grub.cfg
+   #+END_SRC
+**  卸载USB
+    #+BEGIN_SRC 
+# exit 
+# umout -R /mnt    
+    #+END_SRC
+* vim全局
+  #+BEGIN_SRC 
+ # Defaults !env_reset ==> sudo visudo
+  #+END_SRC
+  
