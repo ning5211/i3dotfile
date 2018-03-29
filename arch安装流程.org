@@ -95,6 +95,7 @@ mount /dev/sdx /mnt/boot
     #+BEGIN_SRC 
 pacman -S intel-ucode
     #+END_SRC
+
 ** 安装grub
 *** BIOS启动
     #+BEGIN_SRC 
