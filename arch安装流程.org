@@ -116,6 +116,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # exit 
 # umout -R /mnt    
     #+END_SRC
+
 * vim全局
   #+BEGIN_SRC 
  # Defaults !env_reset ==> sudo visudo
