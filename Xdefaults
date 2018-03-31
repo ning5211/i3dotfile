@@ -15,15 +15,13 @@ URxvt.saveLines:    10000
 
 
 
-URxvt*font:xft:InconsolataGo Nerd Font:pixelsize=20,xft:DejaVuSansMono Nerd Font:pixelsize=20,xft:wenquanyi micro hei:pixelsize=20
-!URxvt*font:xft:DejaVuSansMono Nerd Font:pixelsize=16,xft:wenquanyi micro hei:pixelsize=16
+URxvt*font:xft:InconsolataGo Nerd Font:pixelsize=18,xft:DejaVuSansMono Nerd Font:pixelsize=18,xft:wenquanyi micro hei:pixelsize=18
 URxvt.scrollBar: false
 urxvt*depth: 32
 !字间距
 !URxvt*letterSpace: -1
 
 
-!URxvt.perl-ext-common:  ...,resize-font,...
 !! Extensions
 URxvt.perl-ext-common:	default,matcher,resize-font,url-select,keyboard-select
 URxvt*skipBuiltinGlyphs:    true
@@ -34,7 +32,7 @@ URxvt.resize-font.bigger:	C-k
 !URxvt.keysym.C-j:    resize-font:smaller
 !URxvt.keysym.C-k:    resize-font:bigger
 
-! Dracula Xresources palette
+! Dracula 配色
 *.foreground: #c7c8f7
 URxvt*.background: [85]#282A36
 *.color0:     #000000
