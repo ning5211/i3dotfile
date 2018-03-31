@@ -1,19 +1,6 @@
 
 
 !<<<------xrdb .Xdefaults刷新生效------------->>>>
-! rofi 设置
-rofi.width: 50
-rofi.lines: 10
-rofi.columns: 1
-rofi.font:  WenQuanYi Micro Hei 16
-rofi.bw: 0
-rofi.padding: 4
-rofi.eh: 1
-rofi.fake-transparency:	true
-rofi.opacity:		"10"
-rofi.hide-scrollbar:    true
-
-
 
 
 !urxvt 设置 
