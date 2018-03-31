@@ -1,0 +1,20 @@
+
+rofi.width: 50
+rofi.lines: 8
+rofi.columns: 1
+rofi.font:  WenQuanYi Micro Hei 16
+rofi.bw: 0
+rofi.padding: 4
+rofi.eh: 1
+rofi.fake-transparency:	true
+rofi.opacity:		"10"
+rofi.hide-scrollbar:    true
+
+
+
+
+
+
+
+rofi.theme: ~/.config/rofi/dracula.rasi
+
