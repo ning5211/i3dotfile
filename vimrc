@@ -24,8 +24,6 @@
 	    set nocompatible
 	    filetype plugin on
 	    syntax on
-        "dracula配色:
-        color dracula
 	    set encoding=utf-8
         set backspace=indent,eol,start
         "一个tab所占列数为4:
@@ -77,8 +75,15 @@
         autocmd filetype html,css,htmldjango,javascript set shiftwidth=2 tabstop=2 softtabstop=2
 
 
+        "dracula配色:
+        color dracula
         hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
         hi PmenuSel ctermfg=16 ctermbg=84 cterm=bold guifg=#282a36 guibg=#50fa7b gui=NONE
+        hi! Normal ctermbg=NONE ctermfg=NONE
+        hi! NonText ctermbg=NONE ctermfg=NONE
+
+
+
 
         "禁用方向键:
         noremap <Up> <Nop>
