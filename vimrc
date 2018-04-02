@@ -5,7 +5,7 @@
         call vundle#begin()
 
         Plugin 'VundleVim/Vundle.vim'
-        Plugin 'dracula/vim'
+        Plugin 'yadex/dracula'
         Plugin 'xuhdev/vim-latex-live-preview'
         Plugin 'vim-airline/vim-airline'
         Plugin 'mattn/emmet-vim'
@@ -17,6 +17,8 @@
 
         call vundle#end()
         filetype plugin indent on
+
+
 
 
 " Some basics:
@@ -58,13 +60,6 @@
         nnoremap tl : tablast<cr> 
         nnoremap tx : tabclose<cr>
 
-
-
-
-        " Enable autocompletion:
-     	set wildmode=longest,list,full
-     	set wildmenu
-
         "隐藏gui界面的菜单 工具栏 滚动条
         set guioptions-=m
         set guioptions-=T
@@ -74,18 +69,16 @@
 
         autocmd filetype html,css,htmldjango,javascript set shiftwidth=2 tabstop=2 softtabstop=2
 
-
-        "dracula配色:
-        let g:dracula_italic = 0
-        color dracula
+" color:
+"        let g:dracula_italic = 0
+        color dracula 
+       " set termguicolors
         hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
         hi PmenuSel ctermfg=16 ctermbg=84 cterm=bold guifg=#282a36 guibg=#50fa7b gui=NONE
-        hi! Normal ctermbg=NONE ctermfg=NONE
-        hi! NonText ctermbg=NONE ctermfg=NONE
-
-
-
-
+"        hi! Normal ctermbg=NONE ctermfg=NONE 
+"        hi! NonText ctermbg=NONE ctermfg=NONE
+        hi! Normal guifg=#c7c8f7
+        hi! NonText guifg=#c7c8f7
         "禁用方向键:
         noremap <Up> <Nop>
         noremap <Down> <Nop>
@@ -113,7 +106,6 @@
         let g:airline#extensions#ale#enabled = 1
         let g:airline_theme='dracula'
         let g:powerline_pycmd="py3"
-
 
 
 
