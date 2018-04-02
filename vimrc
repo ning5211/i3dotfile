@@ -76,6 +76,7 @@
 
 
         "dracula配色:
+        let g:dracula_italic = 0
         color dracula
         hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
         hi PmenuSel ctermfg=16 ctermbg=84 cterm=bold guifg=#282a36 guibg=#50fa7b gui=NONE
