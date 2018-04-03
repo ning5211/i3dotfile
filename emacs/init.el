@@ -47,7 +47,7 @@
                 powerline
                 org-bullets
                 ;;emmet
-		emmet-mode
+                emmet-mode
                 web-mode
                 ;; --- Major Mode ---
                 ;; --- Themes ---
