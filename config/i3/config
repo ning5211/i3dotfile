@@ -61,8 +61,8 @@ exec --no-startup-id  mpd
 
 ##---------------------基本键盘绑定------------------
 
-bindsym $mod+Return 		        exec $term
-bindsym $mod+Shift+Return 		    exec $reterm
+bindsym $mod+Return                 exec $term
+bindsym $mod+Shift+Return           exec $reterm
 
 bindsym $mod+Shift+space 	        floating toggle    
 bindsym $mod+space		            focus mode_toggle  
