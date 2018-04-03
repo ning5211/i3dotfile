@@ -5,7 +5,7 @@
         call vundle#begin()
 
         Plugin 'VundleVim/Vundle.vim'
-        Plugin 'yadex/dracula'
+        Plugin 'dracula/vim'
         Plugin 'xuhdev/vim-latex-live-preview'
         Plugin 'vim-airline/vim-airline'
         Plugin 'mattn/emmet-vim'
@@ -70,13 +70,13 @@
         autocmd filetype html,css,htmldjango,javascript set shiftwidth=2 tabstop=2 softtabstop=2
 
 " color:
-"        let g:dracula_italic = 0
+        let g:dracula_italic = 0
         color dracula 
        " set termguicolors
         hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
         hi PmenuSel ctermfg=16 ctermbg=84 cterm=bold guifg=#282a36 guibg=#50fa7b gui=NONE
-"        hi! Normal ctermbg=NONE ctermfg=NONE 
-"        hi! NonText ctermbg=NONE ctermfg=NONE
+        hi! Normal ctermbg=NONE ctermfg=NONE 
+        hi! NonText ctermbg=NONE ctermfg=NONE
         hi! Normal guifg=#c7c8f7
         hi! NonText guifg=#c7c8f7
         "禁用方向键:
