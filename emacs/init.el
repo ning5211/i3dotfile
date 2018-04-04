@@ -3,6 +3,25 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+(setq gc-cons-threshold 402653184
+      gc-cons-percentage 0.6)
+
+(defvar startup/file-name-handler-alist file-name-handler-alist)
+(setq file-name-handler-alist nil)
+
+(defun startup/revert-file-name-handler-alist ()
+  (setq file-name-handler-alist startup/file-name-handler-alist))
+
+(defun startup/reset-gc ()
+  (setq gc-cons-threshold 16777216
+	gc-cons-percentage 0.1))
+
+(add-hook 'emacs-startup-hook 'startup/revert-file-name-handler-alist)
+(add-hook 'emacs-startup-hook 'startup/reset-gc)
+
+
+
+
 (setq inhibit-startup-message t)
 
 (setq backup-directory-alist (quote (("." . "~/.emacs-backups"))))
@@ -46,6 +65,8 @@
                 evil
                 powerline
                 org-bullets
+                projectile
+                dashboard
                 ;;emmet
                 emmet-mode
                 web-mode
@@ -75,6 +96,21 @@
    (exec-path-from-shell-initialize))
 
 
+;dahsboard自定义启动界面
+
+(dashboard-setup-startup-hook)
+(setq dashboard-banner-logo-title "Welcome to Vmacs")
+(setq dashboard-startup-banner "~/.emacs.d/img/vim.png")
+
+(setq dashboard-items '((recents  . 5)
+                        (bookmarks . 5)
+                        (projects . 5)
+                        (agenda . 5)
+                        (registers . 5)))
+;(setq dashboard-banner-logo-title ""))
+
+
+
 
 
 (load-theme 'doom-dracula t) 
@@ -85,7 +121,33 @@
 (evil-mode 1)
 
 
+;latex设置
+;;--------------
 
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+(add-hook 'LaTeX-mode-hook 
+          (lambda()
+             (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
+             (setq TeX-command-default "XeLaTeX")
+	     (setq TeX-view-program-selection "Zathura")
+             (setq TeX-save-query nil)
+             (setq TeX-show-compilation t)))
+
+;
+;(add-to-list 'TeX-view-program-list
+;             '("Zathura"
+;               ("zathura %o"
+;                (mode-io-correlate " --synctex-forward %n:0:%b -x \"emacsclient --socket-name=%sn --no-wait +%{line} %{input}\""))
+;               "zathura"))
+
+
+
+
+
+
+;------emmet
 (add-hook 'emmet-mode-hook
           (lambda ()
             ;; clearing old C-j and C-return key mapping.
@@ -117,7 +179,7 @@
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "360b23bbbedd50c91d5ea04fe73bedbf90fe76dc7bf0b8914a64172e89b5ced5" "90bd0eb20a1cb155b5a076f698b3c72cfe775aa7ea93b7bfbc171eb250db5e20" "6dd2b995238b4943431af56c5c9c0c825258c2de87b6c936ee88d6bb1e577cb9" "8ff5073d6c694a442c85505d6f885a752061b3738e2de7c2b9042ffd2c1579e5" "bce3ae31774e626dce97ed6d7781b4c147c990e48a35baedf67e185ebc544a56" default)))
  '(package-selected-packages
    (quote
-    (web-mode treemacs mingus ## pdf-tools doom-themes org-bullets spaceline zerodark-theme try s evil emmet-mode))))
+    (dashboard web-mode treemacs mingus ## pdf-tools doom-themes org-bullets spaceline zerodark-theme try s evil emmet-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
