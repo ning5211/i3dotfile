@@ -70,6 +70,7 @@
                 ;;emmet
                 emmet-mode
                 web-mode
+		which-key
                 ;; --- Major Mode ---
                 ;; --- Themes ---
                 doom
@@ -100,7 +101,7 @@
 
 (dashboard-setup-startup-hook)
 (setq dashboard-banner-logo-title "Welcome to Vmacs")
-(setq dashboard-startup-banner "~/.emacs.d/img/vim.png")
+(setq dashboard-startup-banner "~/.emacs.d/img/1.png")
 
 (setq dashboard-items '((recents  . 5)
                         (bookmarks . 5)
@@ -112,13 +113,19 @@
 
 
 
-
+;主题
 (load-theme 'doom-dracula t) 
 
 (powerline-default-theme)
 
-;evil-mode
+;evil-mode,vimode in emacs
 (evil-mode 1)
+
+
+;which-key
+(which-key-mode)
+(which-key-setup-side-window-bottom)
+
 
 
 ;latex设置
@@ -179,7 +186,7 @@
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "360b23bbbedd50c91d5ea04fe73bedbf90fe76dc7bf0b8914a64172e89b5ced5" "90bd0eb20a1cb155b5a076f698b3c72cfe775aa7ea93b7bfbc171eb250db5e20" "6dd2b995238b4943431af56c5c9c0c825258c2de87b6c936ee88d6bb1e577cb9" "8ff5073d6c694a442c85505d6f885a752061b3738e2de7c2b9042ffd2c1579e5" "bce3ae31774e626dce97ed6d7781b4c147c990e48a35baedf67e185ebc544a56" default)))
  '(package-selected-packages
    (quote
-    (dashboard web-mode treemacs mingus ## pdf-tools doom-themes org-bullets spaceline zerodark-theme try s evil emmet-mode))))
+    (dashboard web-mode treemacs mingus ## pdf-tools doom-themes org-bullets spaceline try s evil emmet-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
