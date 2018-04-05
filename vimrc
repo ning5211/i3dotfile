@@ -52,6 +52,12 @@
         set guifont=InconsolataGo\ Nerd\ Font\ 14
 
 
+	    set splitbelow
+	    set splitright
+
+	    set wildmode=longest,list,full
+	    set wildmenu
+
         "tab操作:
         nnoremap <C-t> :tabnew<cr>   
         nnoremap th : tabfirst<cr>
@@ -78,6 +84,9 @@
         set guioptions-=b 
 
         autocmd filetype html,css,htmldjango,javascript set shiftwidth=2 tabstop=2 softtabstop=2
+
+        nnoremap <buffer> <F4> :exec '!python' shellescape(@%, 1)<cr>
+	    map <F6> :setlocal spell! spelllang=en_us,es<CR>
 
 " color:
         let g:dracula_italic = 0
@@ -129,19 +138,12 @@
 
 
 
-	     set splitbelow
-	     set splitright
 
-         nnoremap <buffer> <F4> :exec '!python' shellescape(@%, 1)<cr>
-	     map <F6> :setlocal spell! spelllang=en_us,es<CR>
-
+""Goyo 
 	     map <F10> :Goyo<CR>
 	     inoremap <F10> <esc>:Goyo<CR>a
 
-	     set wildmode=longest,list,full
-	     set wildmenu
 
-	     nnoremap <C-t> :tabnew<cr>
 
 ""NERDTree
          map <C-y> : NERDTreeToggle<CR>
