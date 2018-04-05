@@ -1,6 +1,8 @@
-
-
 !<<<------xrdb .Xdefaults刷新生效------------->>>>
+!<<<----M为meta键，一般是Alt;C为Ctrl>>>>
+!<<<安装urxvt-perls扩展>>>
+!<<<---字体缩放扩展需要从aur安装,yaour urxvt-resize-font-git>>
+
 
 
 !urxvt 设置 
@@ -10,29 +12,48 @@ URxvt*borderLess:         false
 URxvt.iso14755:           false
 URxvt.iso14755_52:        false
 
+
+URxvt.scrollBar: false
+urxvt*depth: 32
+
 !超大回滚
 URxvt.saveLines:    10000
 
-
-
-URxvt*font:xft:InconsolataGo Nerd Font:pixelsize=18,xft:DejaVuSansMono Nerd Font:pixelsize=18,xft:wenquanyi micro hei:pixelsize=18
-URxvt.scrollBar: false
-urxvt*depth: 32
 !字间距
 !URxvt*letterSpace: -1
-
-
-!! Extensions
-URxvt.perl-ext-common:	default,matcher,resize-font,url-select,keyboard-select
 URxvt*skipBuiltinGlyphs:    true
-URxvt.colorUL:    #8be9fd
+!!设置字体,推荐使用Nerd Font字体系列
+URxvt*font:xft:InconsolataGo Nerd Font:pixelsize=18,xft:DejaVuSansMono Nerd Font:pixelsize=18,xft:wenquanyi micro hei:pixelsize=18
 
+
+
+
+
+!! perl扩展
+URxvt.perl-ext-common:	default,matcher,resize-font,url-select,keyboard-select
+
+URxvt.colorUL:    #8be9fd
+!! url快速选择
+URxvt.keysym.C-u:	perl:url-select:select_next
+URxvt.url-select.launcher: qutebrowser
+URxvt.url-select.underline: true
+
+
+!!字体缩放
 URxvt.resize-font.smaller:	C-j
 URxvt.resize-font.bigger:	C-k
-!URxvt.keysym.C-j:    resize-font:smaller
-!URxvt.keysym.C-k:    resize-font:bigger
 
-! Dracula 配色
+!! keyboard-select:
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+
+
+!! Matcher
+URxvt.url-launcher:	qutebrowser
+URxvt.matcher.button:	1
+
+
+!! Dracula 配色
 *.foreground: #c7c8f7
 URxvt*.background: [85]#282A36
 *.color0:     #000000
