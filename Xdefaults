@@ -53,7 +53,7 @@ URxvt.url-launcher:	qutebrowser
 URxvt.matcher.button:	1
 
 
-!! Dracula 配色
+!!<<<<----- Dracula 配色
 *.foreground: #c7c8f7
 URxvt*.background: [85]#282A36
 *.color0:     #000000
