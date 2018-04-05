@@ -60,6 +60,15 @@
         nnoremap tl : tablast<cr> 
         nnoremap tx : tabclose<cr>
 
+
+        "buffers缓冲区:
+        nnoremap fk : bnext<cr>
+        nnoremap fj : bprevious<cr>
+        nnoremap fe : enew<cr>
+
+
+
+         
         "隐藏gui界面的菜单 工具栏 滚动条
         set guioptions-=m
         set guioptions-=T
