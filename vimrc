@@ -65,6 +65,7 @@
         nnoremap fk : bnext<cr>
         nnoremap fj : bprevious<cr>
         nnoremap fe : enew<cr>
+        nnoremap fd : bdelete<cr>
 
 
 
