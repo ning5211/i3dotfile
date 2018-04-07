@@ -1,4 +1,6 @@
-##----------------------------------代理设置: ## The proxy to use. In addition to the listed values, you can use a
+##----------------------------------代理设置:
+
+## The proxy to use. In addition to the listed values, you can use a
 ## `socks://...` or `http://...` URL.
 ## Type: Proxy
 ## Valid values:
@@ -6,18 +8,15 @@
 ##   - none: Don't use any proxy
 ##c.content.proxy = 'http://127.0.0.1:8087/proxy/pac'
 ##c.content.proxy = 'socks://127.0.0.1:1080'
-c.content.proxy = 'system'
-##c.content.user_stylesheets='/home/asuka/.config/qutebrowser/dracula.css'
-##c.content.user_stylesheets='/home/asuka/.config/qutebrowser/dark.css'
-
+c.content.proxy ='system'
 
 ###--------------默认空白页：
 c.url.default_page = 'about:blank'
 ###--------------起始页：
-c.url.start_pages = ['~/.config/qutebrowser/startpage.html']
+c.url.start_pages = ['/home/wxn/.config/qutebrowser/startpage.html']
 
 ####----------------字体：
-c.fonts.monospace = '"Sans","xos4 Terminus", Terminus, Monospace, "DejaVu Sans Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier, "Liberation Mono", monospace, Fixed, Consolas, Terminal'
+c.fonts.monospace = '"DejaVuSansMono Nerd Font"'
 
 ## Font used for prompts.
 ## Type: Font
@@ -33,32 +32,32 @@ c.fonts.tabs = '10pt monospace'
 
 ## Font family for cursive fonts.
 ## Type: FontFamily
-c.fonts.web.family.cursive = ''
+c.fonts.web.family.cursive = 'DejaVuSansMono Nerd Font'
 
 ## Font family for fantasy fonts.
 ## Type: FontFamily
 
-c.fonts.web.family.cursive = ''
+c.fonts.web.family.cursive = 'DejaVuSansMono Nerd Font'
 
 ## Font family for fantasy fonts.
 ## Type: FontFamily
-c.fonts.web.family.fantasy = ''
+c.fonts.web.family.fantasy = 'DejaVuSansMono Nerd Font'
 
 ## Font family for fixed fonts.
 ## Type: FontFamily
-c.fonts.web.family.fixed = 'microsoft yahei'
+c.fonts.web.family.fixed = 'WenQuanYi Micro Hei'
 
 ## Font family for sans-serif fonts.
 ## Type: FontFamily
-c.fonts.web.family.sans_serif = 'microsoft yahei'
+c.fonts.web.family.sans_serif = 'WenQuanYi Micro Hei'
 
 ## Font family for serif fonts.
 ## Type: FontFamily
-c.fonts.web.family.serif = 'microsoft yahei'
+c.fonts.web.family.serif = 'WenQuanYi Micro Hei'
 
 ## Font family for standard fonts.
 ## Type: FontFamily
-c.fonts.web.family.standard = 'microsoft yahei'
+c.fonts.web.family.standard = 'WenQuanYi Micro Hei'
 
 ## The default font size for regular text.
 ## Type: Int
@@ -340,4 +339,8 @@ config.bind('y', 'prompt-accept yes', mode='prompt')
 
 ## Bindings for register mode
 config.bind('<Escape>', 'leave-mode', mode='register')
+
+
+
+
 
